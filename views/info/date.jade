@@ -1,0 +1,58 @@
+extends ../layout
+
+block content
+  h1 #{info.year}
+  p.lead
+    div.dateInfo <img src="#{info.image}" alt="info image" />
+    br
+    div#date.dateInfo #{info.text}
+    br
+    div.dateRemeber !{info.mnemoniks[0].link}
+    br
+    div.dateEdit 
+      h3 Aby przyśpieszyć uczenie się skorzystaj z <a href="/learn/mnemo">Mnemotechniques</a>
+      <textarea name="editor1" id="editor1" rows="80" cols="80"> #{info.mnemoniks[0].link} </textarea>
+  p.buttons 
+      button#rememberButton(type='submit')
+        img(src= "/img/Button_flip.png")
+      button#ignoreButton(type='submit')
+        img(src= "/img/Button_ignore.png")
+      button#testButton(type='submit')
+        img(src= "/img/Button_test.png")
+      button#editButton.dateRemeber.btn(type='submit')
+        i.fa
+        | Edytuj
+      button#saveButton.dateEdit(type='submit')
+        img(src= "/img/Button_test.png")
+      form(action='/learn/next/#{info._id}', method='GET')
+        button.btn.btn.btn-primary(type='submit')
+          i.fa
+          | Następne
+  p
+    script.
+      var editor = CKEDITOR.replace( 'editor1' );
+      $(".dateEdit").hide();
+      $(".dateRemeber").hide();
+      $("#rememberButton").click(function(){
+        $(".dateRemeber").toggle();
+        $(".dateInfo").toggle();
+        $(".dateEdit").hide();
+      });
+      $("#testButton").click(function(){
+        window.location.pathname = "/learn/test"
+      });
+      $("#editButton").click(function(){
+        $(".dateRemeber").toggle();
+        $(".dateEdit").toggle();
+      });
+      $("#saveButton").click(function(){
+        $.get( "/learn/update", {id: "#{info._id}", text: editor.getData()}, function() {
+          alert( "success" );
+          $("#date").val(editor.getData());
+        });
+      });
+      $("#ignoreButton").click(function(){
+        $.get( "/learn/ignore/#{info._id}", {}, function() {
+          alert( "success" );
+        });
+      });

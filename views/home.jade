@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  p.lead
+    div.slogan Efective School Test Preparation with Use of Memory Techniques
+    img(src= "../img/film_HomePage.png")
+    div.slogan Get Ready for Tests!
+    form(action='/learn/demo/', method='GET').book-form
+      button.btn.btn.btn-primary(type='submit')
+        img(src= "../img/cover01.png").book-cover
+    form(action='/learn/demo/', method='GET').book-form
+      button.btn.btn.btn-primary(type='submit', disabled='true')
+        img(src= "../img/cover02.png").book-cover
+    form(action='/learn/demo/', method='GET').book-form
+      button.btn.btn.btn-primary(type='submit', disabled='true')
+        img(src= "../img/cover03.png").book-cover
+    form(action='/learn/demo/', method='GET').book-form
+      button.btn.btn.btn-primary(type='submit', disabled='true')
+        img(src= "../img/cover04.png").book-cover
+    form(action='/learn/demo/', method='GET').book-form
+      button.btn.btn.btn-primary(type='submit', disabled='true')
+        img(src= "../img/cover05.png").book-cover
+    div.slogan Try on-line Course to Improve your Memory Techniques
+    img(src= "../img/course.png")

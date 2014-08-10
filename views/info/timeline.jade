@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+  h1 Timeline
+  p.lead
+    | Wybierz interesującą Cię datę.
+    br
+    hr.grey-line
+    div #{chapter0[0].chapter}
+    ul
+      for d in chapter0
+        if d.bought == true
+          li 
+            a(href="/learn/info/#{d._id}") #{d.name}
+        else 
+          li #{d.name}
+      else
+        li sorry, no infos!
+    div #{chapter1[0].chapter}
+    ul
+      for d in chapter1
+        if d.bought == true
+          li 
+            a(href="/learn/info/#{d._id}") #{d.name}
+        else 
+          li #{d.name}
+      else
+        li sorry, no infos!
+    div #{chapter2[0].chapter}
+    ul
+      for d in chapter2
+        if d.bought == true
+          li 
+            a(href="/learn/info/#{d._id}") #{d.name}
+        else 
+          li #{d.name}
+      else
+        li sorry, no infos!
+    a(href="/learn/info/#{chapter0._id}") Od początku

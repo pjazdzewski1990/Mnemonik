@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  h1 CHECK YOURSELF
+  p.lead
+    hr.blue-line
+    br
+    ul#questions
+      for d in infos
+        li 
+          | #{d.name}   
+          input.styled-input
+          input(type="hidden" value="#{d.year}")
+  br
+  button#sendResultButton(type='submit')
+    img(src= "/img/Button_check.png")
+  p
+    script.
+      var score = 0;
+      var total = 0;
+      $("#sendResultButton").click(function(){
+        $('#questions li').each(function() {
+          total++;
+          if(this.children[0].value === this.children[1].value){
+            score++;
+          }
+        });
+        
+        window.location.pathname = encodeURI("/learn/result/" + (score/total));
+      });

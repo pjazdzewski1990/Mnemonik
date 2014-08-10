@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  h1 TEST RESULT
+  h2 X Test
+  hr.grey-line
+  <input type="text" value="#{score}" class="dial" data-thickness=".15" data-fgColor="#ff8e00" data-readOnly="true">
+  if score<75
+    h1 Not so good :( :(
+    h1 Don’t worry. You can better !
+  else
+    h1 Good job!
+  p.lead
+    | You can do better than that
+    br
+    hr.grey-line
+    form.form-horizontal(action='/learn/timeline/', method='GET')
+      button(type='submit')
+        img(src= "/img/Button_try.png")
+  p
+    script.
+      $(".dial").knob({ });

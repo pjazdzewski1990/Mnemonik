@@ -239,7 +239,7 @@ console.log("Bootstrap");
 var Info = require('./models/Info');
 
 var errorFunction = function(err) {
-  if (err) console.log("Dupa9 " + err);
+  if (err) console.log("Save error " + err);
 };
 
 Info.count({ }, function (err, count) {

@@ -68,7 +68,7 @@ var csrfExclude = ['/url1', '/url2'];
  * Express configuration.
  */
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT ||  process.env.OPENSHIFT_INTERNAL_PORT || 8080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(compress());
@@ -228,8 +228,9 @@ app.use(errorHandler());
 /**
  * Start Express server.
  */
-
-app.listen(app.get('port'), function() {
+var ipaddr = process.env.OPENSHIFT_NODEJS_IP || process.env.OPENSHIFT_INTERNAL_IP || "localhost";
+console.log("Starting on --> " + ipaddr + ":" + app.get('port') + " in " + app.get('env'));
+app.listen(ipaddr, app.get('port'), function() {
   console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
 

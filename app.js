@@ -1,4 +1,4 @@
-/*console.log("run app.js");
+console.log("run app.js");
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var compress = require('compression');
@@ -303,6 +303,3 @@ Info.count({ }, function (err, count) {
 ///BOOTSTRAP - end
 
 module.exports = app;
-*/
-console.log("dummy");
-module.exports = {};

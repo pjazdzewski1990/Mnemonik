@@ -18,7 +18,7 @@
 
 module.exports = {
 
-  db: (process.env.OPENSHIFT_MONGODB_DB_URL + 'mnemonik')|| 'mongodb://localhost:27017/test',
+  db: (process.env.OPENSHIFT_MONGODB_DB_URL + 'mnemonik')|| 'mongodb://localhost:27017/mnemonik',
 
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
